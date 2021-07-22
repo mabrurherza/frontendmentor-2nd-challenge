@@ -1,0 +1,179 @@
+@import url("https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700&family=Nanum+Gothic&display=swap");
+
+:root {
+  --display: "Barlow Condensed", sans-serif;
+  --body: "Nanum Gothic", sans-serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #e4f7f6;
+  width: 100vw;
+  height: 100vh;
+
+  font-family: var(--body);
+  color: white;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+main {
+  margin: 5vh 10vw 5vh 10vw;
+  display: flex;
+  flex-direction: row;
+  border-radius: 20px;
+
+  /*! NEW!!!! supaya children element ngikutin bentuk dari parentnya (kasus ini pake border-radius) maka gunakan overflow: hidden */
+  overflow: hidden;
+}
+
+.card {
+  min-height: 600px;
+  padding: 4vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 20px;
+}
+
+.card.sedan {
+  background: #e28525;
+}
+.card.suv {
+  background: #016972;
+}
+.card.luxury {
+  background: #00403f;
+}
+
+.card.sedan:hover {
+  background: #f59331;
+}
+.card.suv:hover {
+  background: #05808b;
+}
+.card.luxury:hover {
+  background: #025250;
+}
+
+.icon {
+  width: 100px;
+  border-radius: 100px;
+  overflow: hidden;
+}
+
+/*? CAR ANIMATION */
+#car-right {
+  transform: translateX(0);
+}
+
+#car-left {
+  transform: translateX(-100%);
+}
+
+.card:hover.luxury svg .kanan {
+  transform: translateX(100%);
+}
+
+#car-right-move {
+  transform: translateX(100%);
+  transition: all 0.7s ease-in;
+}
+
+#car-left-move {
+  transform: translateX(0%);
+  transition: all 1s cubic-bezier(0.35, 0.39, 0.12, 0.98);
+  transition-delay: 1s;
+}
+
+/* ////////////////////////////////////////// */
+
+.headline {
+  font-size: 3rem;
+  font-family: var(--display);
+  font-weight: 600;
+}
+
+.description {
+  line-height: 1.75;
+}
+
+button {
+  margin-top: auto;
+  padding: 15px 0 15px 0;
+  width: 180px;
+  font-size: 1rem;
+  font-weight: 700;
+  color: white;
+  background: transparent;
+  border: white 2px solid;
+  cursor: pointer;
+  border-radius: 100px;
+  letter-spacing: 1px;
+}
+
+button:hover {
+  background: white;
+  color: rgb(41, 41, 41);
+}
+
+@media only screen and (max-width: 1000px) {
+  body {
+    height: 100%;
+  }
+
+  main {
+    flex-direction: column;
+  }
+
+  .card {
+    min-height: 480px;
+    padding: 10vw;
+  }
+
+  .card.sedan:hover {
+    background: #e28525;
+  }
+  .card.suv:hover {
+    background: #016972;
+  }
+  .card.luxury:hover {
+    background: #00403f;
+  }
+
+  button {
+    position: relative;
+    overflow: hidden;
+    color: #fff;
+    background-color: transparent;
+    transition: background 400ms;
+  }
+
+  button:hover {
+    background: transparent;
+    color: white;
+  }
+
+  /* SAVE FOR LATER: Ripple effect when button is clicked */
+  span.ripple {
+    position: absolute; /* The absolute position we mentioned earlier */
+    border-radius: 50%;
+    transform: scale(0);
+    animation: ripple 600ms linear;
+    background-color: rgba(255, 255, 255, 0.7);
+  }
+
+  @keyframes ripple {
+    to {
+      transform: scale(4);
+      opacity: 0;
+    }
+  }
+}
